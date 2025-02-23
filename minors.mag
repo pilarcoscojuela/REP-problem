@@ -1,0 +1,36 @@
+q := 2;
+n := 10;
+m := 54;
+k := 12;
+
+
+F := GF(q);
+
+// variables
+
+R<[vars]> := PolynomialRing(F, m, "grevlex");
+vec_x :=Vector(R,m,vars[1..m]);
+
+
+// matrices
+load "matrices_nph.m";
+Ax := [vec_x * A[i]: i in [1..k]]; 
+Ajoined := VerticalJoin(Ax);
+
+//minors 
+minors_ideal:=function(mat,r)
+    ecs_minors:=Minors(mat, r);
+    
+    return ecs_minors;
+end function;
+
+SetVerbose("Faugere",1);
+I:=ideal<R| [x: x in minors_ideal(Ajoined,2)|x ne 0]>;
+dim:=Dimension(I);
+
+GB:=GroebnerBasis(I);
+
+
+exit;
+
+
