@@ -3,7 +3,7 @@ n := 17;
 m := 251;
 k := 16;
 d:=Maximum((m-n),0);
-//n1 := (k-1) * n;
+
 
 F := GF(q);
 
@@ -30,7 +30,7 @@ Ajoined := HorizontalJoin(Aprime);
 
 
 system := ElementToSequence(kernel[1]*Ajoined);  
-// system cat:= // fill in 
+
 
 
 SetVerbose("Groebner", 1);
